@@ -16,32 +16,28 @@
     }
     h1 { font-size: 2rem; margin: 0 0 1.5rem; text-align: center; }
     p  { margin: 0 0 2rem; text-align: center; }
-    nav {
-      margin: 2rem 0;
-      font-size: 1rem;
-      text-align: center;
-    }
-    nav a {
-      margin: 0 0.5rem;
-      text-decoration: none;
-      color: #0366d6;
-    }
+    nav { margin: 2rem 0; font-size: 1rem; text-align: center; }
+    nav a { margin: 0 0.5rem; text-decoration: none; color: #0366d6; }
     nav a:hover { text-decoration: underline; }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(12, 1fr);
       gap: 1rem;
+      grid-auto-flow: dense;
     }
     .gallery img {
       width: 100%;
-      height: auto;
       display: block;
       border-radius: 4px;
       background: #fff;
       border: 1px solid #ddd;
       padding: 4px;
+      object-fit: cover;
     }
+    .gallery img.landscape { grid-column: span 4; aspect-ratio: 3 / 2; }
+    .gallery img.portrait  { grid-column: span 6; aspect-ratio: 2 / 3; }
+    .gallery img.landscape.wide { grid-column: span 6; aspect-ratio: 3 / 2; }
 
     footer {
       margin-top: 3rem;
@@ -52,39 +48,11 @@
       border-top: 1px solid #ddd;
     }
     footer p { margin: 0.3rem 0; }
-    .gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
 
-.gallery img.landscape {
-  grid-column: span 1;
-}
-
-.gallery img.portrait {
-  grid-column: span 2;
-}
-
-.gallery img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: #fff;
-  padding: 4px;
-}
-
-@media (max-width: 600px) {
-  .gallery {
-    grid-template-columns: 1fr;
-  }
-  .gallery img.portrait,
-  .gallery img.landscape {
-    grid-column: span 1;
-  }
-}
+    @media (max-width: 600px) {
+      .gallery { grid-template-columns: 1fr; }
+      .gallery img { grid-column: span 1; aspect-ratio: auto; }
+    }
   </style>
 </head>
 <body>
@@ -99,16 +67,16 @@
   <p>I take pics on film and digital. I love taking photos, but I'm terrible at actually getting them processed and in my drives. Heres a collection of some of my favourites ive managed to get in the right places.</p>
 
   <div class="gallery">
-    <img src="01.JPG" alt="Photo 1" class="landscape">
-    <img src="02.JPG" alt="Photo 2" class="landscape">
-    <img src="04.JPG" alt="Photo 4" class="landscape">
-    <img src="03.JPG" alt="Photo 3" class="portrait">
-    <img src="05.jpg" alt="Photo 5" class="portrait">
+    <img src="01.JPG"  alt="Photo 1"  class="landscape">
+    <img src="02.JPG"  alt="Photo 2"  class="landscape">
+    <img src="04.JPG"  alt="Photo 4"  class="landscape">
+    <img src="03.JPG"  alt="Photo 3"  class="portrait">
+    <img src="05.jpg"  alt="Photo 5"  class="portrait">
     <img src="012.jpeg" alt="Photo 12" class="portrait">
-    <img src="06.jpg" alt="Photo 6" class="landscape">
-    <img src="07.jpg" alt="Photo 7" class="landscape">
-    <img src="08.jpeg" alt="Photo 8" class="landscape">
-    <img src="09.jpg" alt="Photo 9" class="landscape">
+    <img src="06.jpg"  alt="Photo 6"  class="landscape wide">
+    <img src="07.jpg"  alt="Photo 7"  class="landscape">
+    <img src="08.jpeg" alt="Photo 8"  class="landscape">
+    <img src="09.jpg"  alt="Photo 9"  class="landscape">
     <img src="010.jpg" alt="Photo 10" class="landscape">
     <img src="011.jpg" alt="Photo 11" class="landscape">
     <img src="013.jpg" alt="Photo 13" class="landscape">
